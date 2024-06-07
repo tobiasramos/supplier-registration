@@ -1,0 +1,31 @@
+.container {
+    height: 100vh;
+    padding: 15px;
+    background-color: #ccc;
+}
+
+.header {
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.header input {
+    width: 350px;
+    margin-right: 20px;
+}
+
+.list {
+    width: 90%;
+    margin: auto auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.pagination {
+    margin-top: -1px !important;
+    padding: 5px;
+    background-color: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}

@@ -2,11 +2,11 @@
     height: 46px;
     padding: 10px;
     text-align: center;
-    background-color: #ccc;
+    background-color: #2C3E50;
 }
 
 .container span {
     font-size: 22px;
     font-weight: 800;
-    color: red;
+    color: #007BFF;
 }
