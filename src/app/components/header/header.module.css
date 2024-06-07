@@ -1,0 +1,12 @@
+.container {
+    height: 46px;
+    padding: 10px;
+    text-align: center;
+    background-color: #ccc;
+}
+
+.container span {
+    font-size: 22px;
+    font-weight: 800;
+    color: red;
+}
