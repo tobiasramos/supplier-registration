@@ -1,11 +1,11 @@
-import AddSuppliers from "@/app/components/add-suppliers/AddSuppliers";
+import ListSupplier from "@/app/components/list-supplier/listSupplier";
 
-const Dashboard =()=>{
-    return(
-        <div>
-            <AddSuppliers/>
-        </div>
-    )
-}
+const Dashboard = () => {
+  return (
+    <div>
+      <ListSupplier />
+    </div>
+  );
+};
 
 export default Dashboard;
