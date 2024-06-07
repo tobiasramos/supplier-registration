@@ -1,0 +1,14 @@
+{
+  "suppliers": [
+    {
+      "id": "04c8",
+      "name": "TESTE",
+      "cnpj": "56",
+      "reason_social": "Tobias LTDA",
+      "address": "Rua tal e tal",
+      "telephone": "88963217",
+      "email": "TESTE",
+      "responsible": "TOBIAS "
+    }
+  ]
+}
