@@ -1,11 +1,13 @@
 "use client";
-import { Button, Input, message, Modal } from "antd";
+import { Button, message, Modal } from "antd";
 import { useState } from "react";
 import { useStore } from "../../../../store";
-import styles from "./AddSuppliers.module.css";
+import Form from "../form-supplier/Form";
 
 const AddSuppliers = () => {
   const [open, setOpen] = useState(false);
+  const { createSuppliers, getAllSupplier } = useStore();
+  const [messageApi, contextHolder] = message.useMessage();
 
   const showModal = () => {
     setOpen(true);
@@ -36,19 +38,16 @@ const AddSuppliers = () => {
     responsible: "",
   });
 
-  const { createSuppliers } = useStore();
-
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
+  const successMessage = () => {
     messageApi.open({
       type: "success",
       content: "Cadastro realizado com sucesso.",
     });
   };
-  const error = (content?: string) => {
+  const errorMessage = (msg: string) => {
     messageApi.open({
       type: "error",
-      content: "Não foi possível cadastrar o fornecedor",
+      content: msg,
     });
   };
 
@@ -72,13 +71,13 @@ const AddSuppliers = () => {
       !email ||
       !responsible
     ) {
-      error();
+      errorMessage("Por favor, preencha todos os campos.");
       return false;
     }
     return true;
   };
 
-  const handleChange = (e: any) => {
+  const handleChangeAdd = (e: any) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -92,7 +91,8 @@ const AddSuppliers = () => {
     }
     try {
       await createSuppliers(formData);
-      success();
+      getAllSupplier();
+      successMessage();
       setFormData({
         name: "",
         cnpj: 0,
@@ -104,65 +104,8 @@ const AddSuppliers = () => {
       });
       setOpen(false);
     } catch (err) {
-      error("Os campos não podem estar vazios. Por favor, preencha-os.");
+      errorMessage("Não foi possível cadastrar o fornecedor.");
     }
-  };
-
-  const render = () => {
-    return (
-      <div className={styles.container}>
-        {contextHolder}
-        <Input
-          type="name"
-          name="name"
-          placeholder="Nome"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <Input
-          type="number"
-          name="cnpj"
-          placeholder="Cnpj"
-          value={formData.cnpj}
-          onChange={handleChange}
-        />
-        <Input
-          type="name"
-          name="reason_social"
-          placeholder="Razão social"
-          value={formData.reason_social}
-          onChange={handleChange}
-        />
-        <Input
-          type="name"
-          name="address"
-          placeholder="Endereço"
-          value={formData.address}
-          onChange={handleChange}
-        />
-        <Input
-          type="name"
-          name="telephone"
-          placeholder="Telefone"
-          value={formData.telephone}
-          onChange={handleChange}
-        />
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <Input
-          type="name"
-          name="responsible"
-          placeholder="resposável"
-          value={formData.responsible}
-          onChange={handleChange}
-        />
-      </div>
-    );
   };
 
   return (
@@ -174,9 +117,11 @@ const AddSuppliers = () => {
         title="Adicionar fornecedor"
         open={open}
         onOk={handleOk}
+        okText="Adicionar"
         onCancel={handleCancel}
       >
-        {render()}
+        {contextHolder}
+        <Form formDataSupplier={formData} handleChange={handleChangeAdd} />
       </Modal>
     </div>
   );
