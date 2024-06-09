@@ -6,6 +6,7 @@ type StoreState = {
   suppliers: Supplier[];
   createSuppliers: (suppliersData: Supplier) => Promise<void>;
   getAllSupplier: () => Promise<void>;
+  deleteSupplier: (supplierId: string) => Promise<void>;
 };
 
 export const useStore = create<StoreState>((set) => ({
@@ -20,6 +21,16 @@ export const useStore = create<StoreState>((set) => ({
 
   getAllSupplier: async () => {
     try {
+      const response = await axios.get("http://localhost:3003/suppliers");
+      set({ suppliers: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  deleteSupplier: async (supplierId: string) => {
+    try {
+      await axios.delete(`http://localhost:3003/suppliers/${supplierId}`);
       const response = await axios.get("http://localhost:3003/suppliers");
       set({ suppliers: response.data });
     } catch (error) {

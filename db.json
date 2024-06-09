@@ -1,16 +1,6 @@
 {
   "suppliers": [
     {
-      "id": "04c8",
-      "name": "TESTE",
-      "cnpj": "56",
-      "reason_social": "Tobias LTDA",
-      "address": "Rua tal e tal",
-      "telephone": "88963217",
-      "email": "TESTE",
-      "responsible": "TOBIAS "
-    },
-    {
       "id": "5909",
       "name": "TOBIAS RAMOS",
       "cnpj": "261111111111156",
@@ -59,36 +49,6 @@
       "telephone": "Tobias LTDA",
       "email": "Tobias LTDA",
       "responsible": "Tobias LTDA"
-    },
-    {
-      "id": "0db1",
-      "name": "aa",
-      "cnpj": "020202",
-      "reason_social": "aa",
-      "address": "aa",
-      "telephone": "aa",
-      "email": "aa",
-      "responsible": "as"
-    },
-    {
-      "id": "53ae",
-      "name": "bb",
-      "cnpj": "52263",
-      "reason_social": "bb",
-      "address": "bb",
-      "telephone": "bb",
-      "email": "bb",
-      "responsible": "bb"
-    },
-    {
-      "id": "a6e1",
-      "name": "cc",
-      "cnpj": "14256",
-      "reason_social": "cc",
-      "address": "cc",
-      "telephone": "cc",
-      "email": "cc",
-      "responsible": "cc"
     }
   ]
 }
