@@ -3,7 +3,11 @@ import { Button, message, Modal } from "antd";
 import { useState } from "react";
 import { useStore } from "../../../../store";
 import Form from "../form-supplier/Form";
-import { validateCNPJ, validateEmail, validatePhoneNumber } from "@/app/utils/validationUtils";
+import {
+  validateCNPJ,
+  validateEmail,
+  validatePhoneNumber,
+} from "@/app/utils/validationUtils";
 
 const AddSuppliers = () => {
   const [open, setOpen] = useState(false);
@@ -75,7 +79,7 @@ const AddSuppliers = () => {
       errorMessage("Por favor, preencha todos os campos.");
       return false;
     }
-    
+
     if (!validateCNPJ(cnpj)) {
       errorMessage("Por favor, forneça um CNPJ válido.");
       return false;
@@ -130,7 +134,11 @@ const AddSuppliers = () => {
         Adicionar fornecedor
       </Button>
       <Modal
-        title="Adicionar fornecedor"
+        title={
+          <span style={{ color: "#007FFF", fontWeight: "800" }}>
+            Adicionar fornecedorr
+          </span>
+        }
         open={open}
         onOk={handleOk}
         okText="Adicionar"

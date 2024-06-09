@@ -1,8 +1,13 @@
-.container input {
+.container .formField label {
+    color: #007FFF;
+    font-weight: 400;
+}
+
+.container .formField input {
     margin-bottom: 10px;
 }
 
 .container input::placeholder {
-    color: #007FFF;
-    font-weight: 500;
+    color: #657275;
+    font-weight: 400;
 }

@@ -1,5 +1,5 @@
-# Supplier Registration 
-Esta aplicação é um módulo de cadastro de fornecedores para o sistema de gestão de processos de uma organização. Onde é possível cadastrar fornecedor, listar fornecedores cadastrados, editar, visualizar e excluir fornecedores cadastrados.
+# Supplier Registration
+Esta aplicação é um módulo de cadastro de fornecedores para o sistema de gestão de processos de uma organização. Onde é possível cadastrar fornecedor, listar fornecedores cadastrados, editar, visualizar e excluir fornecedores cadastrados. E conta com sua versão mobile, possibilitando a utilização em celulares. 
 
 ## Instalação
 1. Clone o repositório: git clone https://github.com/tobiasramos/supplier-registration.git
@@ -8,14 +8,17 @@ Esta aplicação é um módulo de cadastro de fornecedores para o sistema de ges
 
 ## Uso
 1. Execute o projeto localmente: npm run dev
-2. Abra o navegador e acesse: http://localhost:3000
+2. Execute em outro terminal: npx json-server db.json --port 3003
+3. Abra o navegador e acesse: http://localhost:3000
 
 ## Tecnologias utilizadas
- - HTML
- - CSS
- - TYPESCRIPT
- - NEXTJS
- - ZUSTAND 
- - ANT DESIGN
+- HTML
+- CSS
+- TYPESCRIPT
+- NEXTJS
+- ZUSTAND
+- ANT DESIGN
+- JSON SERVER
 
 ## Projeto em execução
+[![tela](./tela.gif)](https://supplier-registration-git-main-tobias-ramos-projects.vercel.app/){:target="_blank"}

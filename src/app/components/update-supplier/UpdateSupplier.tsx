@@ -114,7 +114,11 @@ const UpdateSupplier = ({
 
   return (
     <Modal
-      title="Atualizar Fornecedor"
+      title={
+        <span style={{ color: "#007FFF", fontWeight: "800" }}>
+          Atualizar Fornecedor
+        </span>
+      }
       open={visible}
       onOk={handleUpdateSupplier}
       onCancel={onClose}
