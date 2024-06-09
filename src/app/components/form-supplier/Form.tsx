@@ -12,7 +12,7 @@ const Form = ({ formDataSupplier, handleChange }: FormProps) => {
   return (
     <div className={styles.container}>
       <Input
-        type="name"
+        type="text"
         name="name"
         placeholder="Nome"
         value={formDataSupplier.name}
