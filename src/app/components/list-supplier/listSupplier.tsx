@@ -13,6 +13,7 @@ const ListSupplier = () => {
   const { suppliers, getAllSupplier, deleteSupplier } = useStore();
   const [filteredSuppliers, setFilteredSuppliers] = useState<Supplier[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const [modalType, setModalType] = useState<"delete" | "update" | null>(null);
   const [selectedSupplier, setSelectedSupplier] = useState<Supplier | null>(
     null
@@ -20,7 +21,12 @@ const ListSupplier = () => {
   const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
-    getAllSupplier();
+    const fetchSuppliers = async () => {
+      setLoading(true);
+      await getAllSupplier();
+      setLoading(false);
+    };
+    fetchSuppliers();
   }, [getAllSupplier]);
 
   useEffect(() => {
@@ -60,9 +66,11 @@ const ListSupplier = () => {
 
   const handleDelete = async () => {
     if (selectedSupplier && selectedSupplier.id) {
+      setLoading(true);
       await deleteSupplier(selectedSupplier.id);
       handleModalVisibility(null);
       successMessage();
+      setLoading(false);
     }
   };
 
@@ -151,6 +159,7 @@ const ListSupplier = () => {
         rowKey="id"
         pagination={{ pageSize: 5, className: styles.pagination }}
         scroll={{ x: true }}
+        loading={loading}
       />
       {contextHolder}
       <DeleteSupplier

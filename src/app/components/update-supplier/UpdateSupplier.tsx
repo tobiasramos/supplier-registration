@@ -21,6 +21,7 @@ const UpdateSupplier = ({
   visible,
   onClose,
 }: UpdateSupplierProps) => {
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const { updateSupplier, getAllSupplier } = useStore();
   const [formData, setFormData] = useState<Supplier | null>(supplier);
   const [messageApi, contextHolder] = message.useMessage();
@@ -97,11 +98,12 @@ const UpdateSupplier = ({
   };
 
   const handleUpdateSupplier = async () => {
+    if (confirmLoading) return;
     if (!validations()) {
       return;
     }
-
     if (!formData) return;
+    setConfirmLoading(true);
     try {
       await updateSupplier(formData.id!, formData);
       getAllSupplier();
@@ -109,6 +111,8 @@ const UpdateSupplier = ({
       onClose();
     } catch (err) {
       errorMessage("Não foi possível atualizar o fornecedor.");
+    } finally {
+      setConfirmLoading(false);
     }
   };
 
@@ -116,11 +120,12 @@ const UpdateSupplier = ({
     <Modal
       title={
         <span style={{ color: "#007FFF", fontWeight: "800" }}>
-          Atualizar Fornecedor
+          Atualizar fornecedor
         </span>
       }
       open={visible}
       onOk={handleUpdateSupplier}
+      confirmLoading={confirmLoading}
       onCancel={onClose}
       okText="Atualizar"
     >

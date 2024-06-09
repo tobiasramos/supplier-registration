@@ -8,7 +8,6 @@ Esta aplicação é um módulo de cadastro de fornecedores para o sistema de ges
 
 ## Uso
 1. Execute o projeto localmente: npm run dev
-2. Execute em outro terminal: npx json-server db.json --port 3003
 3. Abra o navegador e acesse: http://localhost:3000
 
 ## Tecnologias utilizadas
@@ -18,7 +17,6 @@ Esta aplicação é um módulo de cadastro de fornecedores para o sistema de ges
 - NEXTJS
 - ZUSTAND
 - ANT DESIGN
-- JSON SERVER
 
 ## Projeto em execução
 [![tela](./tela.gif)](https://supplier-registration-git-main-tobias-ramos-projects.vercel.app/){:target="_blank"}
