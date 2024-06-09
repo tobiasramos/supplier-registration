@@ -3,6 +3,7 @@ import { Button, message, Modal } from "antd";
 import { useState } from "react";
 import { useStore } from "../../../../store";
 import Form from "../form-supplier/Form";
+import { validateCNPJ, validateEmail, validatePhoneNumber } from "@/app/utils/validationUtils";
 
 const AddSuppliers = () => {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ const AddSuppliers = () => {
     setOpen(false);
     setFormData({
       name: "",
-      cnpj: 0,
+      cnpj: "",
       reason_social: "",
       address: "",
       telephone: "",
@@ -30,7 +31,7 @@ const AddSuppliers = () => {
 
   const [formData, setFormData] = useState({
     name: "",
-    cnpj: 0,
+    cnpj: "",
     reason_social: "",
     address: "",
     telephone: "",
@@ -74,6 +75,21 @@ const AddSuppliers = () => {
       errorMessage("Por favor, preencha todos os campos.");
       return false;
     }
+    
+    if (!validateCNPJ(cnpj)) {
+      errorMessage("Por favor, forneça um CNPJ válido.");
+      return false;
+    }
+
+    if (!validatePhoneNumber(telephone)) {
+      errorMessage("Por favor, forneça um telefone válido.");
+      return false;
+    }
+
+    if (!validateEmail(email)) {
+      errorMessage("Por favor, forneça um email válido.");
+      return false;
+    }
     return true;
   };
 
@@ -95,7 +111,7 @@ const AddSuppliers = () => {
       successMessage();
       setFormData({
         name: "",
-        cnpj: 0,
+        cnpj: "",
         reason_social: "",
         address: "",
         telephone: "",
