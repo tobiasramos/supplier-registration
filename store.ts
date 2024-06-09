@@ -14,7 +14,7 @@ export const useStore = create<StoreState>((set) => ({
   suppliers: [],
   createSuppliers: async (suppliersData: any) => {
     try {
-      await axios.post("http://localhost:3003/suppliers", suppliersData);
+      await axios.post("https://api-fornecedores.onrender.com/suppliers", suppliersData);
     } catch (error: any) {
       console.log(error);
     }
@@ -22,7 +22,7 @@ export const useStore = create<StoreState>((set) => ({
 
   getAllSupplier: async () => {
     try {
-      const response = await axios.get("http://localhost:3003/suppliers");
+      const response = await axios.get("https://api-fornecedores.onrender.com/suppliers");
       set({ suppliers: response.data });
     } catch (error) {
       console.log(error);
@@ -31,8 +31,9 @@ export const useStore = create<StoreState>((set) => ({
 
   deleteSupplier: async (supplierId: string) => {
     try {
-      await axios.delete(`http://localhost:3003/suppliers/${supplierId}`);
-      const response = await axios.get("http://localhost:3003/suppliers");
+      console.log(supplierId)
+      await axios.delete(`https://api-fornecedores.onrender.com/suppliers/${supplierId}`);
+      const response = await axios.get("https://api-fornecedores.onrender.com/suppliers");
       set({ suppliers: response.data });
     } catch (error) {
       console.log(error);
@@ -41,8 +42,8 @@ export const useStore = create<StoreState>((set) => ({
 
   updateSupplier: async (supplierId: string, updatedData: Supplier) => {
     try {
-      await axios.put(`http://localhost:3003/suppliers/${supplierId}`, updatedData);
-      const response = await axios.get("http://localhost:3003/suppliers");
+      await axios.put(`https://api-fornecedores.onrender.com/suppliers/${supplierId}`, updatedData);
+      const response = await axios.get("https://api-fornecedores.onrender.com/suppliers");
       set({ suppliers: response.data });
     } catch (error) {
       console.log(error);

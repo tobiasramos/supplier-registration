@@ -11,6 +11,7 @@ import {
 
 const AddSuppliers = () => {
   const [open, setOpen] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const { createSuppliers, getAllSupplier } = useStore();
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -106,9 +107,11 @@ const AddSuppliers = () => {
   };
 
   const handleCreateSuppliers = async () => {
+    if (confirmLoading) return;
     if (!validations()) {
       return;
     }
+    setConfirmLoading(true);
     try {
       await createSuppliers(formData);
       getAllSupplier();
@@ -125,6 +128,8 @@ const AddSuppliers = () => {
       setOpen(false);
     } catch (err) {
       errorMessage("Não foi possível cadastrar o fornecedor.");
+    } finally {
+      setConfirmLoading(false); 
     }
   };
 
@@ -136,11 +141,12 @@ const AddSuppliers = () => {
       <Modal
         title={
           <span style={{ color: "#007FFF", fontWeight: "800" }}>
-            Adicionar fornecedorr
+            Adicionar fornecedor
           </span>
         }
         open={open}
         onOk={handleOk}
+        confirmLoading={confirmLoading}
         okText="Adicionar"
         onCancel={handleCancel}
       >
