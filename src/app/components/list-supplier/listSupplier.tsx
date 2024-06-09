@@ -119,11 +119,12 @@ const ListSupplier = () => {
       render: (text: any, record: any) => (
         <>
           <Button
-            icon={<EditOutlined />}
+            style={{ marginRight: "4px" }}
+            icon={<EditOutlined style={{ color: "#657275" }} />}
             onClick={() => handleModalVisibility("update", record)}
           />
           <Button
-            icon={<DeleteOutlined />}
+            icon={<DeleteOutlined style={{ color: "#657275" }} />}
             onClick={() => handleModalVisibility("delete", record)}
           />
         </>
@@ -149,6 +150,7 @@ const ListSupplier = () => {
         columns={columns}
         rowKey="id"
         pagination={{ pageSize: 5, className: styles.pagination }}
+        scroll={{ x: true }}
       />
       {contextHolder}
       <DeleteSupplier

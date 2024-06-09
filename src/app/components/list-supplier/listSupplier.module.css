@@ -22,6 +22,16 @@
     border-top-right-radius: 10px;
 }
 
+.list th {
+    color: #007BFF !important;
+    font-weight: 800 !important;
+}
+
+.list td {
+    color: #657275 !important;
+    font-weight: 400 !important;
+}
+
 .pagination {
     margin-top: -1px !important;
     padding: 5px;

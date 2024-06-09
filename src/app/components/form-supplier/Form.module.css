@@ -1,3 +1,8 @@
-.container input{
+.container input {
     margin-bottom: 10px;
+}
+
+.container input::placeholder {
+    color: #007FFF;
+    font-weight: 500;
 }
