@@ -20,32 +20,34 @@ const Form = ({ formDataSupplier, handleChange }: FormProps) => {
       />
 
       <Input
-        type="number"
+        type="text"
         name="cnpj"
         placeholder="Cnpj"
         value={formDataSupplier.cnpj}
         onChange={handleChange}
+        maxLength={14}
       />
       <Input
-        type="name"
+        type="text"
         name="reason_social"
         placeholder="Razão social"
         value={formDataSupplier.reason_social}
         onChange={handleChange}
       />
       <Input
-        type="name"
+        type="text"
         name="address"
         placeholder="Endereço"
         value={formDataSupplier.address}
         onChange={handleChange}
       />
       <Input
-        type="name"
+        type="text"
         name="telephone"
         placeholder="Telefone"
         value={formDataSupplier.telephone}
         onChange={handleChange}
+        maxLength={11}
       />
       <Input
         type="email"
@@ -55,7 +57,7 @@ const Form = ({ formDataSupplier, handleChange }: FormProps) => {
         onChange={handleChange}
       />
       <Input
-        type="name"
+        type="text"
         name="responsible"
         placeholder="resposável"
         value={formDataSupplier.responsible}

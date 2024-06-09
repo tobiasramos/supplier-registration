@@ -1,17 +1,19 @@
 "use client";
-import { Button, Input, message, Popconfirm, Space, Table } from "antd";
+import { Button, Input, message, Table } from "antd";
 import { useStore } from "../../../../store";
 import { useEffect, useState } from "react";
-import { Supplier } from "@/app/interface/Supplier ";
+import { Supplier } from "@/app/interface/Supplier";
 import AddSuppliers from "../add-suppliers/AddSuppliers";
 import styles from "./listSupplier.module.css";
 import DeleteSupplier from "../delete-supplier/DeleteSupplier";
+import UpdateSupplier from "../update-supplier/UpdateSupplier";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 const ListSupplier = () => {
   const { suppliers, getAllSupplier, deleteSupplier } = useStore();
   const [filteredSuppliers, setFilteredSuppliers] = useState<Supplier[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [modalType, setModalType] = useState<"delete" | "update" | null>(null);
   const [selectedSupplier, setSelectedSupplier] = useState<Supplier | null>(
     null
   );
@@ -48,21 +50,30 @@ const ListSupplier = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleDeleteModal = (supplier: any) => {
-    setSelectedSupplier(supplier);
-    setDeleteModalVisible(true);
-  };
-
-  const handleCancelDeleteModal = () => {
-    setDeleteModalVisible(false);
+  const handleModalVisibility = (
+    type: "delete" | "update" | null,
+    supplier?: Supplier
+  ) => {
+    setModalType(type);
+    setSelectedSupplier(supplier || null);
   };
 
   const handleDelete = async () => {
     if (selectedSupplier && selectedSupplier.id) {
       await deleteSupplier(selectedSupplier.id);
-      setDeleteModalVisible(false);
+      handleModalVisibility(null);
       successMessage();
     }
+  };
+
+  const formatPhoneNumber = (phoneNumber: any) => {
+    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, "");
+
+    const formattedPhoneNumber = `(${cleanedPhoneNumber.slice(
+      0,
+      2
+    )}) ${cleanedPhoneNumber.slice(2)}`;
+    return formattedPhoneNumber;
   };
 
   const columns = [
@@ -90,6 +101,7 @@ const ListSupplier = () => {
       title: "Telefone",
       dataIndex: "telephone",
       key: "telephone",
+      render: (telephone: any) => formatPhoneNumber(telephone),
     },
     {
       title: "Email",
@@ -105,7 +117,16 @@ const ListSupplier = () => {
       title: "Ação",
       key: "action",
       render: (text: any, record: any) => (
-        <Button onClick={() => handleDeleteModal(record)}>Excluir</Button>
+        <>
+          <Button
+            icon={<EditOutlined />}
+            onClick={() => handleModalVisibility("update", record)}
+          />
+          <Button
+            icon={<DeleteOutlined />}
+            onClick={() => handleModalVisibility("delete", record)}
+          />
+        </>
       ),
     },
   ];
@@ -131,9 +152,14 @@ const ListSupplier = () => {
       />
       {contextHolder}
       <DeleteSupplier
-        visible={deleteModalVisible}
-        handleCancel={handleCancelDeleteModal}
+        visible={modalType === "delete"}
+        handleCancel={() => handleModalVisibility(null)}
         handleDelete={handleDelete}
+      />
+      <UpdateSupplier
+        supplier={selectedSupplier}
+        visible={modalType === "update"}
+        onClose={() => handleModalVisibility(null)}
       />
     </div>
   );
