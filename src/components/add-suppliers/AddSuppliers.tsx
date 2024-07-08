@@ -1,13 +1,13 @@
 "use client";
 import { Button, message, Modal } from "antd";
 import { useState } from "react";
-import { useStore } from "../../../../store";
+import { useStore } from "../../../store";
 import Form from "../form-supplier/Form";
 import {
   validateCNPJ,
   validateEmail,
   validatePhoneNumber,
-} from "@/app/utils/validationUtils";
+} from "@/utils/validationUtils";
 
 const AddSuppliers = () => {
   const [open, setOpen] = useState(false);
