@@ -19,4 +19,4 @@ Esta aplicação é um módulo de cadastro de fornecedores para o sistema de ges
 - ANT DESIGN
 
 ## Projeto em execução
-[![tela](./tela.gif)](https://supplier-registration-git-main-tobias-ramos-projects.vercel.app/){:target="_blank"}
+[![tela](./tela.gif)](https://supplier-registration-git-main-tobias-ramos-projects.vercel.app/)

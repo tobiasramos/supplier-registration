@@ -1,4 +1,4 @@
-import ListSupplier from "@/app/components/list-supplier/listSupplier";
+import ListSupplier from "@/components/list-supplier/listSupplier";
 
 const Dashboard = () => {
   return (

@@ -15,6 +15,16 @@
     margin-right: 20px;
 }
 
+.container button {
+    color: #657275;
+
+}
+
+.container button:last-child {
+    margin-left: 5px;
+
+}
+
 .list {
     width: 90%;
     margin: auto auto;
@@ -38,4 +48,17 @@
     background-color: #fff;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
+}
+
+@media (max-width: 1219px) {
+    .container button:not(:first-child) {
+        margin-left: 0px;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 800px) {
+    .list td {
+        font-size: 12px;
+    }
 }

@@ -1,4 +1,4 @@
-import { Supplier } from "@/app/interface/Supplier";
+import { Supplier } from "@/interface/Supplier";
 import axios from "axios";
 import { create } from "zustand";
 

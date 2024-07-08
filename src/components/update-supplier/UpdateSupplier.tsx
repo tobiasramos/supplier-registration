@@ -1,14 +1,14 @@
 "use client";
 import { message, Modal } from "antd";
 import { useEffect, useState } from "react";
-import { useStore } from "../../../../store";
+import { useStore } from "../../../store";
 import Form from "../form-supplier/Form";
-import { Supplier } from "@/app/interface/Supplier";
+import { Supplier } from "@//interface/Supplier";
 import {
   validateCNPJ,
   validateEmail,
   validatePhoneNumber,
-} from "@/app/utils/validationUtils";
+} from "@/utils/validationUtils";
 
 interface UpdateSupplierProps {
   supplier: Supplier | null;

@@ -1,8 +1,8 @@
 "use client";
 import { Button, Input, message, Table } from "antd";
-import { useStore } from "../../../../store";
+import { useStore } from "../../../store";
 import { useEffect, useState } from "react";
-import { Supplier } from "@/app/interface/Supplier";
+import { Supplier } from "@/interface/Supplier";
 import AddSuppliers from "../add-suppliers/AddSuppliers";
 import styles from "./listSupplier.module.css";
 import DeleteSupplier from "../delete-supplier/DeleteSupplier";
@@ -125,17 +125,16 @@ const ListSupplier = () => {
       title: "Ação",
       key: "action",
       render: (text: any, record: any) => (
-        <>
+        <div className={styles.containerBtns}>
           <Button
-            style={{ marginRight: "4px" }}
-            icon={<EditOutlined style={{ color: "#657275" }} />}
+            icon={<EditOutlined />}
             onClick={() => handleModalVisibility("update", record)}
           />
           <Button
-            icon={<DeleteOutlined style={{ color: "#657275" }} />}
+            icon={<DeleteOutlined />}
             onClick={() => handleModalVisibility("delete", record)}
           />
-        </>
+        </div>
       ),
     },
   ];
